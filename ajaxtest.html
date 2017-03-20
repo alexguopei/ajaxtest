@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<p id="load">改变</p>
+		<button id="change">改变</button>
+	</div>
+
+	<script type="text/javascript">
+	document.getElementById("change").onclick=function(){
+			var xmlhttp;
+			if (window.XMLHttpRequest)
+			{
+			    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+			xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+			  // IE6, IE5 浏览器执行代码
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			} 
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				    {
+				      document.getElementById("load").innerHTML=xmlhttp.responseText;
+				    }
+			} 
+			xmlhttp.open('Get','ajaxtest.txt?t='+Math.random(),true)
+			xmlhttp.send();
+	}
+	
+	</script>	
+</body>
+</html>
